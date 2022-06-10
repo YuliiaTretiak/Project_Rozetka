@@ -1,6 +1,3 @@
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,16 +13,21 @@ public class BasePageTest {
     private WebDriver driver;
     private static final String ROZETKA_URL = "https://rozetka.com.ua/ua/";
 
-
-    public void setUp() {
+    @BeforeAll
+    public static void setUp() {
         chromedriver().setup();
     }
 
-
+    @BeforeEach
     public void testsSetUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(ROZETKA_URL);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        driver.close();
     }
 
     public WebDriver getDriver() {
@@ -38,7 +40,4 @@ public class BasePageTest {
 
     public SearchResultsPage getSearchResultsPage () {return new SearchResultsPage(getDriver());}
 
-    public void tearDown() {
-        driver.close();
-    }
 }
