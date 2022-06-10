@@ -26,6 +26,7 @@ public class HomePageTest extends BasePageTest{
     @Test
     public void checkSearchResults (){
         getHomePage().searchByKeyword(SEARCH_WORD);
+        getHomePage().clickSearchButton();
         getSearchResultsPage().waitForPageLoadComplete(DEFAULT_TIMEOUT);
         getSearchResultsPage().waitForAjaxToComplete(DEFAULT_TIMEOUT);
         getSearchResultsPage().waitForAjaxToCompletePdp(DEFAULT_TIMEOUT);

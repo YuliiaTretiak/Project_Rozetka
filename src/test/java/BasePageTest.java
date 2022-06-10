@@ -16,21 +16,16 @@ public class BasePageTest {
     private WebDriver driver;
     private static final String ROZETKA_URL = "https://rozetka.com.ua/ua/";
 
-    @Before
+
     public void setUp() {
         chromedriver().setup();
     }
 
-    @BeforeClass
+
     public void testsSetUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(ROZETKA_URL);
-    }
-
-    @AfterClass
-    public void tearDown() {
-        driver.close();
     }
 
     public WebDriver getDriver() {
@@ -42,4 +37,8 @@ public class BasePageTest {
     }
 
     public SearchResultsPage getSearchResultsPage () {return new SearchResultsPage(getDriver());}
+
+    public void tearDown() {
+        driver.close();
+    }
 }

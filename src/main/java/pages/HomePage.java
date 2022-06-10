@@ -14,6 +14,8 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//input")
     private WebElement searchField;
+    @FindBy (xpath = "//button[contains(@class, 'search-form__submit ng-star-inserted')]")
+    private WebElement searchButton;
 
     public HomePage(WebDriver driver) {super(driver);}
 
@@ -26,7 +28,9 @@ public class HomePage extends BasePage{
     }
 
     public void searchByKeyword(final String keyword) {
-        searchField.sendKeys(keyword, Keys.ENTER);
+        searchField.sendKeys(keyword);
     }
+
+    public void clickSearchButton () { searchButton.click();}
 
 }
