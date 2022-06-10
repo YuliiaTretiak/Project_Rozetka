@@ -26,7 +26,6 @@ public class HomePage extends BasePage{
     }
 
     public void searchByKeyword(final String keyword) {
-        searchField.clear();
         searchField.sendKeys(keyword, Keys.ENTER);
     }
 
